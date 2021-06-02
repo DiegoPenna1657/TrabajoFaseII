@@ -143,7 +143,6 @@ public class Paciente extends Persona implements Comparable<Paciente> {
         this.getPracticas();
        
 	}
-
 	@Override
 	public int compareTo(Paciente x) {
 		if(this.getDni().compareTo(x.getDni())>0) return 1;
