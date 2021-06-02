@@ -1,16 +1,119 @@
-
-public class ListLinked <T extends Comparable<T>> implements TDAList<T> 
-//public class OrderListLinked <T extends Comparable<T>> extends ListLinked<T> 
-{
-	private Node<T> first;
+import java.util.ArrayList;
+import java.util.Arrays;
+public class ListLinked <T extends Comparable<T>> implements TDAList <T> {
+	private Node <T> first;
 	private int count;
 	
+	public ListLinked() {
+		super();
+		this.first = null;
+		this.count = 0;
+	}
+
+	@Override
+	public boolean isEmptyList() {
+		return this.first==null;
+	}
+
+	@Override
+	public int length() {
+		return this.count;
+	}
+
+	@Override
+	public void destroyList() {
+		while(this.first != null)
+			this.first = first.getNext();
+	}
+
+	@Override
+	public int search(T x) {
+		Node <T> ay = this.first;
+		for(int i=0; ay !=null; ay = ay.getNext(),i++)
+			if(ay.getData().equals(x))
+				return i;
+		return -1;
+	}
+	public Node<T> getNodeAt(Node<T> ser){
+		Node <T> ay = this.first;
+		while(ay!=null) {
+			if(ay.getData()==ser.getData()) {
+				return ser;
+			}
+			ay=ay.getNext();
+		}
+		return null;
+	}
+
+	@Override
+	public void insertFirst(T x) {
+		this.first = new Node<T>(x,this.first);
+		this.count++;
+	}
+
+	@Override
+	public void insertLastT(T x) {
+		if(this.isEmptyList())
+			this.insertFirst(x);
+		else {
+			Node<T> lastNode = this.getLastNode();
+			lastNode.setNext(new Node<T>(x));
+			this.count++;
+		}		
+	}
+	
+	@Override
+	public void remove(T x) {
+		if(this.first==null)
+			return;
+		if(this.search(x)<0)
+			return;
+		Node <T> con = this.first;
+		Node <T> ay = null;
+		
+		if (this.first.getData().equals(x)) {
+			ay=this.first;
+			this.first=this.first.getNext();
+			ay=null;
+		} 
+		else{
+			while(con.getNext().getData().equals(x)==false){
+				 con=con.getNext();
+			}
+			
+			ay = con.getNext();
+			con.setNext(ay.getNext());
+			ay=null;
+		}
+		this.count--;
+	}	
+
+	@Override
+	public String toString() {
+		Node <T> ay = this.first;
+		String str="";
+		for(int i=0; ay !=null; ay = ay.getNext(),i++)
+			str+="\nPosicion: "+ i +" Objeto: "+ ay.getData();
+		return str;	
+	}
+	
+	//PreCondicion: lista no debe estas vacia
+	private Node<T> getLastNode(){
+		Node<T> ay= this.first;
+		while(ay.getNext()!=null)
+			ay=ay.getNext();
+		return ay;
+	}
+
 	public Node<T> getFirst() {
 		return first;
 	}
 
-	public void setFirst(Node<T> first) {
-		this.first = first;
+	public void setFirst(T x) {
+		this.first.setData(x);
+	}
+	public void setFirst(Node<T>x) {
+		this.first=x;
 	}
 
 	public int getCount() {
@@ -20,94 +123,40 @@ public class ListLinked <T extends Comparable<T>> implements TDAList<T>
 	public void setCount(int count) {
 		this.count = count;
 	}
-
-	public ListLinked() {
-		this.first = null;
-		this.count = 0;
+	
+	public ListLinked <Integer>ocurrencias(T x) {
+		ListLinked <Integer> lb  = new ListLinked<Integer>();
+		Node <T> ay = this.first;
+		for(Integer i=0; ay !=null; ay = ay.getNext(),i++)
+			if(ay.getData().equals(x))
+				lb.insertFirst(i);
+		return lb;
+	}
+	public ListArray<OrderListLinked<T>> clasificar(T x){
+		ListArray<OrderListLinked<T>> l1 = new ListArray<OrderListLinked<T>>(3);
+		Node <T> ay = this.first;
+		OrderListLinked<T> lb  = new OrderListLinked<T>();
+		OrderListLinked<T> la  = new OrderListLinked<T>();
+		
+		while (ay.getNext()!=null) {
+			if(ay.getData().compareTo(x)<0) {
+				la.insert(ay.getData());	
+			}
+			else {
+				lb.insert(ay.getData());
+			}
+			ay=ay.getNext();
+		}
+		l1.insertFirst(la);
+		l1.insertLastT(lb);
+		return l1;
 	}
 	
-	public boolean isEmptyList() {
-		return this.first == null;
-	}
-
-	public int length() {
-		return this.count;
-	}
-
-	public void destroyList() {
-		//Eliminar todos los elementos, ir desde el inicio eliminando, pero antes desanlazor haciendo un puente hacia el segundo
-		while(this.first!= null)
-			this.first = this.first.getNext(); 
-		this.count = 0;
-	}
-
-	public int search(T x) {
-		// A partir de ir recorriendo, si es el primer elemento su posición es 0, esa es 0, inferencia. posc -1
-		Node<T> aux = this.first;
-		for(int i = 0 ;aux != null;aux = aux.getNext(),i++)
-			if (aux.getData().equals(x))
-				return i;		
-		return -1;
-	}
-
-	public void insertFirst(T x) {
-		//Cuando se inserta al inicio tiene que cambiar el first, el primero se convertiria en el segundo
-		this.first = new Node<T>(x,this.first);
-		this.count++;
 		
-	}
-
-	public void insertLast(T x) 
-	{
-		//Se recorre todo, hasta llegar al nodo que tiene nulo y ahi es donde se elimina.
-		if(this.isEmptyList())
-			this.insertFirst(x);
-		else {
-			Node<T> last = getLastNode();
-			last.setNext(new Node<T>(x));
-			this.count++;
-			
-		}
-	}
-
-	private Node<T> getLastNode() 	//La lista no debe estar vacia, se debe verificar en el método que usara este método.
-	{
-		Node<T> aux = this.first;
-		while (aux.getNext()!= null)
-			aux = aux.getNext();
-		return aux;
-	}
-
-	public void removeNode(T x) 
-	{
-	    //Para eliminar se tiene que desenlazar.
-		Node<T> aux = this.first; //control
-		Node<T> temp = null;
 		
-		if (this.first.getData() == x) //Procedimiento por si el elemento a eliminar es el primero
-		{
-			temp = this.first;
-			this.first = this.first.getNext();
-			temp = null;
-			this.count--;
-		}
-		else { //Procedimiento para cualquier otro nodo 
-			while(aux.getNext() != null){  
-				if (aux.getNext().getData() == x){
-					aux.setNext(aux.getNext().getNext());
-					this.count--;
-					return;
-				}
-				aux = aux.getNext();
-			}
-		}
-	}
-
-	public String toString() {
-		String str = "";
-		Node<T> aux = this.first;
-		for (int i = 0; aux != null; aux = aux.getNext(), i++)
-			str += "["+i+"] = " +aux.getData()+"\n";
-		return str;
-	}
+		
 }
+	
+	
+	
+

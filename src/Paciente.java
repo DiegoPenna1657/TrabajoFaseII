@@ -125,21 +125,21 @@ public class Paciente extends Persona implements Comparable<Paciente> {
 	public String toString() {
 		
 		return 
-		"------------  DATOS DE PACIENTE ------------"
+		"------------  DATOS DE PACIENTE ------------\n"
 		+super.toString()
-        +"\n------------   TIPO DE SANGRE ------------"+
+        +"\n------------   TIPO DE SANGRE ------------\n"+
         this.getTipoSangre()
-        +"\n------------     SEGURO    	------------"+
+        +"\n------------     SEGURO    	------------\n"+
         this.getSeguro()
-        +"\n------------      PESO        ------------"+
+        +"\n------------      PESO        ------------\n"+
         this.getPeso()
-        +"\n------------      ALTURA      ------------"+
+        +"\n------------      ALTURA      ------------\n"+
         this.getAltura()
-        +"\n------------    AFECCIONES    ------------"+
+        +"\n------------    AFECCIONES    ------------\n"+
         this.getAfecciones()
-        +"\n------------   TRATAMIENTOS   ------------"+
+        +"\n------------   TRATAMIENTOS   ------------\n"+
         this.getTratamiento()
-        +"\n------------     PRACTICAS    ------------"+
+        +"\n------------     PRACTICAS    ------------\n"+
         this.getPracticas();
        
 	}

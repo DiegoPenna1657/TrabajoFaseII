@@ -55,10 +55,10 @@ public class Medico extends Persona implements Comparable<Medico>{
 	}
 
 	public int compareTo(Medico o) {
-		if (o.getRuc() == this.ruc) {
+		if (o.getCodigo() == this.codigo) {
 			return 0;
 		}
-		else if (o.getRuc() > this.ruc) {
+		else if (o.getCodigo() > this.codigo) {
 			return 1;
 		}
 		else {

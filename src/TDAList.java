@@ -1,11 +1,10 @@
 
-public interface TDAList<T>
-{
+public interface  TDAList <T> {
 	boolean isEmptyList();
 	int length();
-	void destroyList(); 
+	void destroyList();
 	int search(T x);
-	void insertFirst(T x); 
-	void insertLast(T x);
-	void removeNode(T x);
+	void insertFirst(T x);
+	void insertLastT (T x);
+	void remove(T x);
 }
