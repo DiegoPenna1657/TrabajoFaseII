@@ -15,6 +15,20 @@ public class Paciente extends Persona implements Comparable<Paciente> {
 	
 	
 
+	public Paciente(String nombre, int edad, int dni, String sexo, String tipoSangre, double peso, double altura,
+			String seguro, String practicas, String afecciones, String tratamiento, String ocupacion, Medico medico) {
+		super(nombre, edad, dni, sexo);
+		this.tipoSangre = tipoSangre;
+		this.peso = peso;
+		this.altura = altura;
+		this.seguro = seguro;
+		this.practicas = practicas;
+		this.afecciones = afecciones;
+		this.tratamiento = tratamiento;
+		this.ocupacion = ocupacion;
+		this.medico = medico;
+	}
+
 	public Paciente() {
 		super();
 	}
@@ -143,10 +157,17 @@ public class Paciente extends Persona implements Comparable<Paciente> {
         this.getPracticas();
        
 	}
+	public boolean equals(Object o) {
+		if (o instanceof Paciente) {
+			Paciente m = (Paciente) o;
+			return m.getDni()==this.getDni();
+		}
+		return false;
+	}
 	@Override
 	public int compareTo(Paciente x) {
-		if(this.getDni().compareTo(x.getDni())>0) return 1;
-		if(this.getDni().compareTo(x.getDni())<0) return -1;
+		if(this.getDni()>x.getDni()) return 1;
+		if(this.getDni()<x.getDni()) return -1;
 		return 0;
 	}
 	

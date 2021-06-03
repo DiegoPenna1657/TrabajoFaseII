@@ -29,8 +29,8 @@ public class Test {
 					System.out.println("2.-----CONSULTA/BUSQUEDA DE PACIENTES------");
 					System.out.println("3.-----CONSULTA/BUSQUEDA DE DOCTORES------");
 					System.out.println("4.-----ELIMINACION DE DATOS------");
-					System.out.println("5.-----MODIFICAR DATOS------");
-					System.out.println("6.-----MOSTRAR DATOS------");
+					System.out.println("5.-----MODIFICAR DATOS------"); //Pendiente
+					System.out.println("6.-----MOSTRAR DATOS------"); //
 					System.out.println("7.-----TERMINAR EL PROGRAMA------");
 					Scanner entrada_dos = new Scanner(System.in);
 					int log_dos = entrada.nextInt();
@@ -67,11 +67,11 @@ public class Test {
 						
 						break;
 					case 2:
-						//autor: 
+						//autor: Josue Butron
 						System.out.println("Caso 2");
 						System.out.println("Ingresar dni del paciente a buscar");
 						Paciente p1= new Paciente();
-						p1.setDni(entrada_dos.next());
+						p1.setDni(entrada_dos.nextInt());
 						paciente_linked.search(p1);
 						break;
 					case 3:
@@ -79,14 +79,44 @@ public class Test {
 						System.out.println("Caso 3");
 						System.out.println("Ingresar codigo del doctor a buscar");
 						Medico m1= new Medico();
-						m1.setDni(entrada_dos.next());
+						m1.setCodigo(entrada_dos.nextInt());
 						medico_arraylist.search(m1);
 						break;
 					case 4:
+						//autor: Diego P. Aranibar
 						System.out.println("Caso 4");
+						//autor:
+						System.out.println("Que datos desea eliminar?");
+						System.out.println("1.-----DATOS DE PACIENTE------");
+						System.out.println("2.-----DATOS DE DOCTOR------");
+						System.out.println("3.-----DATOS DE PERSONAL------");
+						Scanner entrada_eliminar = new Scanner(System.in);
+						int log_eliminar = entrada_eliminar.nextInt();
+						switch(log_eliminar){
+						case 1:
+							System.out.println("Ingresar dni del paciente a eliminar");
+							Paciente p2= new Paciente();
+							p2.setDni(entrada_eliminar.nextInt());
+							paciente_linked.remove(p2);
+							break;
+						case 2:
+							System.out.println("Ingresar ruc y codigo del doctor a eliminar");
+							Medico m2= new Medico();
+							m2.setCodigo(entrada_eliminar.nextInt());
+							m2.setRuc(entrada_eliminar.nextInt());
+							medico_arraylist.remove(m2);
+							break;
+						case 3:
+							System.out.println("Ingresar codigo del personal a eliminar");
+							Personal pl1=new Personal();
+							pl1.setCodigo(entrada_eliminar.nextInt());
+							personal_bstree.remove(pl1);
+							break;
+						}
 						break;
 					case 5:
 						System.out.println("Caso 5");
+						
 						break;
 					case 6:
 						//autor: Josue Butron, Mathias Miranda

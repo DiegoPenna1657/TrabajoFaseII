@@ -67,7 +67,7 @@ public class ListArray <T> implements TDAList <T>{
 	public String toString() {
 		String st ="";
 		for(int i=0;i<this.length();i++)
-			st += "\n"+i+"\t"+this.list[i]+"\nSiguiente";
+			st += "\n"+this.list[i]+"\n";
 		return st;
 	}
 	

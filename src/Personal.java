@@ -6,7 +6,7 @@ public class Personal extends Persona implements Comparable<Personal> {
 	private int codigo;
 	private String especialidad;
 	
-	public Personal(String nombre, int edad, String dni, String sexo, int codigo, String especialidad) {
+	public Personal(String nombre, int edad, int dni, String sexo, int codigo, String especialidad) {
 		super(nombre, edad, dni, sexo);
 		this.codigo = codigo;
 		this.especialidad = especialidad;
@@ -54,6 +54,14 @@ public class Personal extends Persona implements Comparable<Personal> {
         if (this.codigo<=x.getCodigo())return -1;
         return 1;
     }
+	
+	public boolean equals(Object o) {
+		if (o instanceof Personal) {
+			Personal m = (Personal) o;
+			return m.codigo==this.codigo;
+		}
+		return false;
+	}
 	
 	
 }

@@ -7,7 +7,7 @@ public class Medico extends Persona implements Comparable<Medico>{
 	private int ruc;
 	private int codigo;
 	
-	public Medico(String nombre, int edad, String dni, String sexo, String especialidad, int ruc, int codigo) {
+	public Medico(String nombre, int edad, int dni, String sexo, String especialidad, int ruc, int codigo) {
 		super(nombre, edad, dni, sexo);
 		this.especialidad = especialidad;
 		this.ruc = ruc;
@@ -41,7 +41,7 @@ public class Medico extends Persona implements Comparable<Medico>{
 		this.codigo = codigo;
 	}
 	
-	public void ingresarDatosMedico() {
+	public void ingresar() {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("------------INGRESAR DATOS DE MÉDICO------------");
@@ -69,7 +69,7 @@ public class Medico extends Persona implements Comparable<Medico>{
 	public boolean equals(Object o) {
 		if (o instanceof Medico) {
 			Medico m = (Medico) o;
-			return m.getEspecialidad().equals(this.especialidad) && m.getRuc() == this.ruc && m.getCodigo() == this.codigo;
+			return m.getRuc() == this.ruc && m.getCodigo() == this.codigo;
 		}
 		return false;
 	}
