@@ -121,7 +121,23 @@ public class BSTree<E extends Comparable <E>> {
 		System.out.print(actual.data.toString()+", ");
 		if(actual.right!=null)inOrden(actual.right);
 	}
-
+	
+	public Node modi (E x) throws ItemNoFound{
+		Node aux=modiRec(x,this.root);
+		if(aux==null)
+			throw new ItemNoFound("El dato no fue encontrado....");
+		return aux;
+	}
+	protected Node modiRec(E x, Node actual) throws ItemNoFound{
+		if(actual==null)
+			return null;
+		else {
+			int resC =actual.data.compareTo(x);
+			if(resC<0)return modiRec(x,actual.right);
+			else if(resC>0) return modiRec(x,actual.left);
+			else return actual;
+		}
+	}
 	
 	
 }

@@ -71,6 +71,15 @@ public class ListArray <T> implements TDAList <T>{
 		return st;
 	}
 	
+	public boolean serchlog(T x) {
+		for(int i = 0;i<this.length();i++)
+			if(this.list[i].equals(x))
+				return true;
+		return false;
+	}
+	
+	
+	
 	
 
 }

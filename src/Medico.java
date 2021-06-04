@@ -53,6 +53,16 @@ public class Medico extends Persona implements Comparable<Medico>{
 		        System.out.println("------------     INGRESAR CÓDIGO        ------------");
 		        this.setCodigo(sc.nextInt());
 	}
+	public void modificar() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("------------MODIFICAR DATOS DE MÉDICO------------");
+		        System.out.println("------------     INGRESAR ESPECIALIDAD        ------------");
+		        this.setEspecialidad(sc.nextLine());
+		        System.out.println("------------     INGRESAR RUC        ------------");
+		        this.setRuc(sc.nextInt());
+		        System.out.println("------------     INGRESAR CÓDIGO        ------------");
+		        this.setCodigo(sc.nextInt());
+	}
 
 	public int compareTo(Medico o) {
 		if (o.getCodigo() == this.codigo) {

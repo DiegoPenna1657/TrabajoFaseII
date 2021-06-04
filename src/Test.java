@@ -6,21 +6,28 @@ public class Test {
 		try {
 			// Autor(es): Gonzalo Urrutia, 
 			//Auxiliar que me ayudara a entrar al menu por primera vez
-			int ver = 1;
-			//Creamos las estructuras de datos que utilizaremos en el programa
+			int ver=1;
 			OrderListLinked <Paciente> paciente_linked = new OrderListLinked<Paciente>();
-			TDAList <Medico> medico_arraylist = new ListArray<Medico>(20);
-			BSTree<Personal> personal_bstree= new BSTree<Personal>();
-			
-			// Se muestra el menú que se mostrará al usuario
-			System.out.println("-------BIENVENIDO AL GESTOR UNIVERSAL DE HISTORIAS CLINICAS ---------");
-			System.out.println("----INGRESE SU CONTRASEÑA DE ADMINISTRADOR O DE PERSONAL---------");
-			Scanner entrada = new Scanner(System.in);
-			int log = entrada.nextInt();
-//			Personal personal1= new Personal();PENDIENTE
-//			personal1.setCodigo(log);		PENDIENTE
-//			
-			if (log == 0000)	//Pendiente de solucionar, or 
+			BSTree<Medico> medico_bstree= new BSTree<Medico>();
+			System.out.println("----BIENVENIDO, CUANTOS EMPLEADOS MANEJARAN SU CONTRASE—A DE ADMINISTRADOR O DE PERSONAL---------");
+            Scanner entrada = new Scanner(System.in);
+            int pre_log = entrada.nextInt();
+            ListArray<Personal> personal_arrylist = new ListArray<Personal>(pre_log);
+            for( int i = 0; i < pre_log ; i++){
+                Personal pr1 = new Personal();
+                do {
+                pr1.ingresar();
+                }while(personal_arrylist.serchlog(pr1));
+                personal_arrylist.insertFirst(pr1);
+                	
+            }
+            Scanner entrada_pre = new Scanner(System.in);
+
+            System.out.println("-------BIENVENIDO AL GESTOR UNIVERSAL DE HISTORIAS CLINICAS ---------");
+            System.out.println("----INGRESE SU CONTRASE—A DE ADMINISTRADOR O DE PERSONAL---------");
+            int cod_pre = entrada.nextInt();
+            Personal pr1_search = new Personal(" ", 0, 0, " ", cod_pre, " ");
+            if (cod_pre == 0000 || personal_arrylist.serchlog(pr1_search))
 			{
 				while (ver != 0)
 				{
@@ -41,6 +48,7 @@ public class Test {
 						System.out.println("1.-----DATOS DE PACIENTE------");
 						System.out.println("2.-----DATOS DE DOCTOR------");
 						System.out.println("3.-----DATOS DE PERSONAL------");
+						System.out.println("4.-----RETROCEDER------");
 						Scanner entrada_ingresar = new Scanner(System.in);
 						int log_ingresar = entrada_ingresar.nextInt();
 						switch(log_ingresar){
@@ -55,15 +63,18 @@ public class Test {
 							System.out.println("Ingresar datos de doctor");
 							Medico m1= new Medico();
 							m1.ingresar();
-							medico_arraylist.insertFirst(m1);
+							medico_bstree.insert(m1);
 							break;
 						case 3:
 							System.out.println("Ingresar datos de personal");
 							Personal pl1=new Personal();
 							pl1.ingresar();
-							personal_bstree.insert(pl1);
+							personal_arrylist.insertLastT(pl1);
+							break;
+						case 4:
 							break;
 						}
+						
 						
 						break;
 					case 2:
@@ -80,7 +91,7 @@ public class Test {
 						System.out.println("Ingresar codigo del doctor a buscar");
 						Medico m1= new Medico();
 						m1.setCodigo(entrada_dos.nextInt());
-						medico_arraylist.search(m1);
+						medico_bstree.search(m1);
 						break;
 					case 4:
 						//autor: Diego P. Aranibar
@@ -90,6 +101,7 @@ public class Test {
 						System.out.println("1.-----DATOS DE PACIENTE------");
 						System.out.println("2.-----DATOS DE DOCTOR------");
 						System.out.println("3.-----DATOS DE PERSONAL------");
+						System.out.println("4.-----RETROCEDER------");
 						Scanner entrada_eliminar = new Scanner(System.in);
 						int log_eliminar = entrada_eliminar.nextInt();
 						switch(log_eliminar){
@@ -104,19 +116,45 @@ public class Test {
 							Medico m2= new Medico();
 							m2.setCodigo(entrada_eliminar.nextInt());
 							m2.setRuc(entrada_eliminar.nextInt());
-							medico_arraylist.remove(m2);
+							medico_bstree.remove(m2);
 							break;
 						case 3:
 							System.out.println("Ingresar codigo del personal a eliminar");
 							Personal pl1=new Personal();
 							pl1.setCodigo(entrada_eliminar.nextInt());
-							personal_bstree.remove(pl1);
+							personal_arrylist.remove(pl1);
+							break;
+						case 4:
 							break;
 						}
 						break;
 					case 5:
 						System.out.println("Caso 5");
-						
+						System.out.println("Que datos desea modificar?");
+						System.out.println("1.-----DATOS DE PACIENTE------");
+						System.out.println("2.-----DATOS DE DOCTOR------");
+						System.out.println("3.-----RETROCEDER------");
+						Scanner entrada_modificar = new Scanner(System.in);
+						int log_modificar = entrada_modificar.nextInt();
+						switch(log_modificar){
+						case 1:
+							System.out.println("Ingresar dni del paciente a modificar");
+							Paciente p2= new Paciente();
+							p2.setDni(entrada_modificar.nextInt());
+							Node<Paciente> pa1=paciente_linked.modi(p2);
+							pa1.getData().modificar();
+							break;
+						case 2:
+							System.out.println("Ingresar ruc y codigo del doctor a modificar");
+							Medico m2= new Medico();
+							m2.setCodigo(entrada_modificar.nextInt());
+							m2.setRuc(entrada_modificar.nextInt());
+							BSTree<Medico>.Node me1=medico_bstree.modi(m2);
+							me1.data.modificar();
+							break;
+						case 3:
+							break;
+						}
 						break;
 					case 6:
 						//autor: Josue Butron, Mathias Miranda
@@ -124,6 +162,7 @@ public class Test {
 						System.out.println("1.-----DATOS DE PACIENTE------");
 						System.out.println("2.-----DATOS DE DOCTOR------");
 						System.out.println("3.-----DATOS DE PERSONAL------");
+						System.out.println("4.-----RETROCEDER------");
 						Scanner entrada_mostrar = new Scanner(System.in);
 						int log_mostrar = entrada_mostrar.nextInt();
 						switch(log_mostrar){
@@ -133,11 +172,13 @@ public class Test {
 							break;
 						case 2:
 							System.out.println("Mostrar datos de doctor");
-							System.out.println(medico_arraylist);
+							medico_bstree.inOrden();
 							break;
 						case 3:
 							System.out.println("Mostrar datos de personal");
-							personal_bstree.inOrden();
+							System.out.println(personal_arrylist);
+							break;
+						case 4:
 							break;
 						}
 						break;
@@ -147,10 +188,8 @@ public class Test {
 						break;
 					default:
 						System.out.println("Ingrese una opcion valida?");
-						break;
-						
+						break;	
 					}
-					
 				}
 			}
 		}

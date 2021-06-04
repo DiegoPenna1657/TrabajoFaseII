@@ -34,6 +34,14 @@ public class ListLinked <T extends Comparable<T>> implements TDAList <T> {
 				return i;
 		return -1;
 	}
+	
+	public Node<T> modi(T x) {
+		Node <T> ay = this.first;
+		for(int i=0; ay !=null; ay = ay.getNext(),i++)
+			if(ay.getData().equals(x))
+				return ay;
+		return null;
+	}
 	public Node<T> getNodeAt(Node<T> ser){
 		Node <T> ay = this.first;
 		while(ay!=null) {

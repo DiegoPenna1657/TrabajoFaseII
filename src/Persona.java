@@ -2,14 +2,14 @@ import java.util.*;
 //Autor(es):Gonzalo Urrutia
 public abstract class Persona{
     private String nombre;
-    private int edad;
+    private int annoNa;
     private int dni;
     private String sexo;
 
-    public Persona(String nombre, int edad, int dni, String sexo) {
+    public Persona(String nombre, int annoNa, int dni, String sexo) {
         super();
         this.nombre = nombre;
-        this.edad = edad;
+        this.annoNa = annoNa;
         this.dni = dni;
         this.sexo = sexo;
     }
@@ -23,13 +23,14 @@ public abstract class Persona{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n------------     INGRESAR NOMBRE      ------------");
 	       this.setNombre(sc.nextLine());
-	    System.out.println("\n------------     INGRESAR EDAD        ------------");
-	       this.setEdad(sc.nextInt());
+	    System.out.println("\n------------     INGRESAR AÑO NACIMIENTO        ------------");
+	       this.setAnnoNa(sc.nextInt());
 	    System.out.println("\n------------     INGRESAR DNI VALIDO         ------------");
 	       this.setDni();
 	    System.out.println("\n------------     INGRESAR SEXO        ------------");
 	       this.setSexo(sc.next());
 	}
+	
 
 
     public int getDni() { return dni; }
@@ -46,15 +47,15 @@ public abstract class Persona{
     public void setSexo(String sexo) { this.sexo = sexo;}
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
-    public int getEdad() { return edad; }
-    public void setEdad(int edad) { this.edad = edad; }
+    public int getAnnoNa() { return annoNa; }
+    public void setAnnoNa(int edad) { this.annoNa = edad; }
 	
     @Override
 	public String toString() {
 		return  "\n------------      NOMBRE      ------------\n"+
 		        this.getNombre()
-		        +"\n------------      EDAD        ------------\n"+
-		        this.getEdad()
+		        +"\n------------      AÑO NACIMIENTO        ------------\n"+
+		        this.getAnnoNa()
 		        +"\n------------      DNI         ------------\n"+
 		        this.getDni()
 		       + "\n------------      SEXO        ------------\n"+

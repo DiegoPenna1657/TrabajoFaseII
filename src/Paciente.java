@@ -56,13 +56,33 @@ public class Paciente extends Persona implements Comparable<Paciente> {
 	        this.setTratamiento(sc.next());
 	        
 	        System.out.println("\n------------    INGRESAR PRACTICAS    ------------");
-	        this.setPracticas(sc.next());
+	        this.setPracticas(sc.next());	 
+	 }
+	 public void modificar() {
+		 Scanner sc = new Scanner(System.in);
+		 	System.out.println("------------MODIFICAR DATOS DE PACIENTE------------");
+		 	
+	        System.out.println("\n------------  INGRESAR TIPO DE SANGRE ------------");
+	        this.setTipoSangre(sc.next());
 	        
-		 
-		 
-		 
-	}
-
+	        System.out.println("\n------------    INGRESAR SEGURO    ------------");
+	        this.setSeguro(sc.next());
+	        
+	        System.out.println("\n------------     INGRESAR PESO        ------------");
+	        this.setPeso(sc.nextDouble());
+	        
+	        System.out.println("\n------------     INGRESAR ALTURA      ------------");
+	        this.setAltura(sc.nextDouble());
+	        
+	        System.out.println("\n------------   INGRESAR AFECCIONES    ------------");
+	        this.setAfecciones(sc.next());
+	        
+	        System.out.println("\n------------  INGRESAR TRATAMIENTOS   ------------");
+	        this.setTratamiento(sc.next());
+	        
+	        System.out.println("\n------------    INGRESAR PRACTICAS    ------------");
+	        this.setPracticas(sc.next());
+	 }
 	public String getTipoSangre() {
 		return tipoSangre;
 	}

@@ -38,6 +38,16 @@ public class Personal extends Persona implements Comparable<Personal> {
 		this.setEspecialidad(sc.next());
 		
 	}
+	public void modificar() {
+		Scanner sc= new Scanner(System.in);
+		System.out.println("------------MODIFICAR DATOS DE PERSONAL------------");
+		System.out.println("------------     INGRESAR CÓDIGO      ------------");
+		this.setCodigo(sc.nextInt());
+		System.out.println("------------     INGRESAR ESPECIALIDAD   ---------");
+		this.setEspecialidad(sc.next());
+		
+	}
+	
 	
 	@Override
 	public String toString() {
