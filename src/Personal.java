@@ -47,8 +47,7 @@ public class Personal extends Persona implements Comparable<Personal> {
 		this.setEspecialidad(sc.next());
 		
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return  "------------  DATOS DE PERSONAL ------------"+

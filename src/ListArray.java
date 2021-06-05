@@ -73,8 +73,10 @@ public class ListArray <T> implements TDAList <T>{
 	
 	public boolean serchlog(T x) {
 		for(int i = 0;i<this.length();i++)
-			if(this.list[i].equals(x))
+			if(this.list[i].equals(x)) {
+				System.out.println("Ingreso un codigo repetido, Vuelva a ingresar los datos nuevamente...");
 				return true;
+			}
 		return false;
 	}
 	

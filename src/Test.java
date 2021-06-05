@@ -18,11 +18,8 @@ public class Test {
                 do {
                 pr1.ingresar();
                 }while(personal_arrylist.serchlog(pr1));
-                personal_arrylist.insertFirst(pr1);
-                	
+                personal_arrylist.insertFirst(pr1);    	
             }
-            Scanner entrada_pre = new Scanner(System.in);
-
             System.out.println("-------BIENVENIDO AL GESTOR UNIVERSAL DE HISTORIAS CLINICAS ---------");
             System.out.println("----INGRESE SU CONTRASE—A DE ADMINISTRADOR O DE PERSONAL---------");
             int cod_pre = entrada.nextInt();
