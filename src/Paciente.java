@@ -196,7 +196,7 @@ public class Paciente extends Persona implements Comparable<Paciente> {
         this.getTratamiento()
         +"\n------------     PRACTICAS    ------------\n"+
         this.getPracticas()
-        +"\n------------     PRACTICAS    ------------\n"+
+        +"\n------------     MEDICO    ------------\n"+
         this.getMedico();   
 	}
 	public boolean equals(Object o) {
