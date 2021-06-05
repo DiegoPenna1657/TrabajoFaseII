@@ -83,30 +83,15 @@ public class Medico extends Persona implements Comparable<Medico>{
 		}
 		return false;
 	}
-	
-	/*
-	public int compareTo(Medico o) {
-		if (o.getCodigo() == this.codigo) {
-			return 0;
-		}
-		else if (o.getCodigo() > this.codigo) {
-			return 1;
-		}
-		else {
-			return -1;
-		}
-	}
-	*/
-	
 	@Override
 	public String toString() {
 		return  "------------  DATOS DE MEDICO ------------"+
 				super.toString()
-				+"\n------------      ESPECIALIDAD      ------------"+
+				+"\n------------      ESPECIALIDAD      ------------\n"+
                 this.getEspecialidad()
-                +"\n------------      RUC        ------------"+
+                +"\n------------      RUC        ------------\n"+
                 this.getRuc()
-                +"\n------------      CÓDIGO         ------------"+
+                +"\n------------      CÓDIGO         ------------\n"+
                 this.getCodigo();
 	}
 }

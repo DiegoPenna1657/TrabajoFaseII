@@ -53,7 +53,7 @@ public class Test {
 						case 1:
 							System.out.println("Ingresar datos de paciente");
 							Paciente p1= new Paciente();
-							p1.ingresar();
+							p1.ingresar(medico_bstree);
 							paciente_linked.insert(p1);
 							break;
 						case 2:
@@ -139,7 +139,7 @@ public class Test {
 							Paciente p2= new Paciente();
 							p2.setDni(entrada_modificar.nextInt());
 							Node<Paciente> pa1=paciente_linked.modi(p2);
-							pa1.getData().modificar();
+							pa1.getData().modificar(medico_bstree);
 							break;
 						case 2:
 							System.out.println("Ingresar ruc y codigo del doctor a modificar");

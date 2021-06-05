@@ -33,7 +33,7 @@ public class Paciente extends Persona implements Comparable<Paciente> {
 		super();
 	}
 	
-	 public void ingresar() {
+	 public void ingresar(BSTree<Medico> a) throws ItemNoFound {
 		 Scanner sc = new Scanner(System.in);
 		 	System.out.println("------------INGRESAR DATOS DE PACIENTE------------");
 		 	super.ingresar();
@@ -57,8 +57,19 @@ public class Paciente extends Persona implements Comparable<Paciente> {
 	        
 	        System.out.println("\n------------    INGRESAR PRACTICAS    ------------");
 	        this.setPracticas(sc.next());	 
+	    
+	        System.out.println("\n------------    ELEGIR AL MEDICO DE CABECERA    ------------");
+	        a.inOrden();
+	        System.out.println("\n------------    INGRESAR RUC Y CODIGO DE MEDICO ELEGIDO    ------------");
+	        
+	        Medico m2= new Medico();
+			m2.setCodigo(sc.nextInt());
+			m2.setRuc(sc.nextInt());
+			this.setMedico(a.search(m2));
+      
+	        
 	 }
-	 public void modificar() {
+	 public void modificar(BSTree<Medico> a) throws ItemNoFound {
 		 Scanner sc = new Scanner(System.in);
 		 	System.out.println("------------MODIFICAR DATOS DE PACIENTE------------");
 		 	
@@ -82,6 +93,16 @@ public class Paciente extends Persona implements Comparable<Paciente> {
 	        
 	        System.out.println("\n------------    INGRESAR PRACTICAS    ------------");
 	        this.setPracticas(sc.next());
+	        
+	        System.out.println("\n------------    ELEGIR AL MEDICO DE CABECERA    ------------");
+	        a.inOrden();
+	        System.out.println("\n------------    INGRESAR RUC Y CODIGO DE MEDICO ELEGIDO    ------------");
+	        
+	        Medico m2= new Medico();
+			m2.setCodigo(sc.nextInt());
+			m2.setRuc(sc.nextInt());
+			this.setMedico(a.search(m2));
+	        
 	 }
 	public String getTipoSangre() {
 		return tipoSangre;
@@ -174,8 +195,9 @@ public class Paciente extends Persona implements Comparable<Paciente> {
         +"\n------------   TRATAMIENTOS   ------------\n"+
         this.getTratamiento()
         +"\n------------     PRACTICAS    ------------\n"+
-        this.getPracticas();
-       
+        this.getPracticas()
+        +"\n------------     PRACTICAS    ------------\n"+
+        this.getMedico();   
 	}
 	public boolean equals(Object o) {
 		if (o instanceof Paciente) {
